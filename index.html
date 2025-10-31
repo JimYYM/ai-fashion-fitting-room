@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fashion Fitting Room - Your Online Style Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🎨 AI Fashion Fitting Room</h1>
+            <p class="tagline">Try on clothes virtually with AI-powered styling assistance</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="layout">
+            <!-- Left Column: Upload & Avatar -->
+            <section class="left-panel">
+                <!-- Image Upload Section -->
+                <div class="card upload-section">
+                    <h2>📸 Upload Your Photo</h2>
+                    <p class="hint">Upload a full-body photo to get started</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="photoUpload" accept="image/jpeg,image/png" hidden>
+                        <label for="photoUpload" class="upload-label">
+                            <span class="upload-icon">📷</span>
+                            <span class="upload-text">Click to upload or drag & drop</span>
+                            <span class="upload-hint">JPEG or PNG (Max 5MB)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <img id="photoPreview" alt="Your photo" class="photo-preview">
+                        <button class="btn-remove" id="removePhoto">✕ Remove</button>
+                    </div>
+                    
+                    <div class="validation-message" id="validationMessage"></div>
+                </div>
+
+            </section>
+
+            <!-- Middle Column: Outfit Selection & Preview -->
+            <section class="middle-panel">
+                <!-- Virtual Try-On Preview -->
+                <div class="card preview-section">
+                    <h2>👗 Virtual Try-On</h2>
+                    <div class="try-on-display" id="tryOnDisplay">
+                        <div class="display-placeholder">
+                            <span class="display-icon">✨</span>
+                            <p>Upload a photo and select an avatar to start</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outfit Selection Grid -->
+                <div class="card outfit-section">
+                    <h2>👔 Select Outfits by Brand</h2>
+                    <p class="hint">Browse curated collections from premium brands</p>
+                    
+                    <!-- Brand Filters -->
+                    <div class="brand-filters">
+                        <button class="brand-filter active" data-brand="all">All Brands</button>
+                        <button class="brand-filter" data-brand="brandA">Brand A - Classic</button>
+                        <button class="brand-filter" data-brand="brandB">Brand B - Modern</button>
+                        <button class="brand-filter" data-brand="brandC">Brand C - Athletic</button>
+                    </div>
+                    
+                    <div class="outfit-grid" id="outfitGrid">
+                        <!-- Brand A Outfits -->
+                        <div class="outfit-card" data-outfit="outfit1" data-brand="brandA">
+                            <span class="brand-badge">Brand A</span>
+                            <div class="outfit-image">👕</div>
+                            <div class="outfit-info">
+                                <h4>Classic Polo</h4>
+                                <p class="price">$45.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit2" data-brand="brandA">
+                            <span class="brand-badge">Brand A</span>
+                            <div class="outfit-image">👔</div>
+                            <div class="outfit-info">
+                                <h4>Oxford Shirt</h4>
+                                <p class="price">$59.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit3" data-brand="brandA">
+                            <span class="brand-badge">Brand A</span>
+                            <div class="outfit-image">🧥</div>
+                            <div class="outfit-info">
+                                <h4>Blazer Jacket</h4>
+                                <p class="price">$129.99</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Brand B Outfits -->
+                        <div class="outfit-card" data-outfit="outfit4" data-brand="brandB">
+                            <span class="brand-badge brand-b">Brand B</span>
+                            <div class="outfit-image">👗</div>
+                            <div class="outfit-info">
+                                <h4>Modern Dress</h4>
+                                <p class="price">$79.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit5" data-brand="brandB">
+                            <span class="brand-badge brand-b">Brand B</span>
+                            <div class="outfit-image">👖</div>
+                            <div class="outfit-info">
+                                <h4>Designer Jeans</h4>
+                                <p class="price">$89.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit6" data-brand="brandB">
+                            <span class="brand-badge brand-b">Brand B</span>
+                            <div class="outfit-image">🎽</div>
+                            <div class="outfit-info">
+                                <h4>Streetwear Top</h4>
+                                <p class="price">$69.99</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Brand C Outfits -->
+                        <div class="outfit-card" data-outfit="outfit7" data-brand="brandC">
+                            <span class="brand-badge brand-c">Brand C</span>
+                            <div class="outfit-image">🩱</div>
+                            <div class="outfit-info">
+                                <h4>Pro Sportswear</h4>
+                                <p class="price">$99.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit8" data-brand="brandC">
+                            <span class="brand-badge brand-c">Brand C</span>
+                            <div class="outfit-image">🏃</div>
+                            <div class="outfit-info">
+                                <h4>Running Outfit</h4>
+                                <p class="price">$109.99</p>
+                            </div>
+                        </div>
+                        <div class="outfit-card" data-outfit="outfit9" data-brand="brandC">
+                            <span class="brand-badge brand-c">Brand C</span>
+                            <div class="outfit-image">🧣</div>
+                            <div class="outfit-info">
+                                <h4>Winter Active</h4>
+                                <p class="price">$139.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-match" id="matchBtn">
+                        ✨ Auto-Match Perfect Outfits
+                    </button>
+                    <p class="match-hint">AI will automatically select the best outfits for you</p>
+                </div>
+            </section>
+
+            <!-- Right Column: Style Assistant & Info -->
+            <section class="right-panel">
+                <!-- Style Assistant Panel -->
+                <div class="card assistant-section">
+                    <h2>🎨 AI Style Assistant</h2>
+                    <div class="assistant-messages" id="assistantMessages">
+                        <div class="message">
+                            <span class="message-icon">💡</span>
+                            <p>Welcome! Upload your photo to get personalized style advice.</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" id="getSuggestion">
+                        Get Style Suggestion
+                    </button>
+                </div>
+
+                <!-- Privacy & Social Impact -->
+                <div class="card privacy-section">
+                    <h2>🔒 Privacy & Impact</h2>
+                    <div class="privacy-content">
+                        <div class="privacy-item">
+                            <span class="icon">🛡️</span>
+                            <div>
+                                <h4>Your Data is Safe</h4>
+                                <p>Photos are processed locally and never stored on our servers</p>
+                            </div>
+                        </div>
+                        <div class="privacy-item">
+                            <span class="icon">♻️</span>
+                            <div>
+                                <h4>Sustainable Fashion</h4>
+                                <p>Try before you buy to reduce returns and waste</p>
+                            </div>
+                        </div>
+                        <div class="privacy-item">
+                            <span class="icon">♿</span>
+                            <div>
+                                <h4>Accessible for All</h4>
+                                <p>Shop from home, perfect for those with mobility challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-share">
+                        <p class="share-label">Share your style:</p>
+                        <div class="social-buttons">
+                            <button class="social-btn facebook">📘 Facebook</button>
+                            <button class="social-btn twitter">🐦 Twitter</button>
+                            <button class="social-btn instagram">📷 Instagram</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Challenges Section -->
+                <div class="card challenges-section">
+                    <div class="collapsible-header" id="challengesHeader">
+                        <h2>🧪 Technical Challenges</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="challengesContent">
+                        <ul class="challenges-list">
+                            <li>
+                                <strong>3D Human Modeling:</strong>
+                                <p>Generating accurate 3D models from 2D photos requires advanced pose estimation and depth mapping</p>
+                            </li>
+                            <li>
+                                <strong>Size Mapping:</strong>
+                                <p>Translating real-world measurements to virtual avatars with precision across different body types</p>
+                            </li>
+                            <li>
+                                <strong>Realistic Rendering:</strong>
+                                <p>Simulating fabric physics, draping, and lighting for photorealistic results</p>
+                            </li>
+                            <li>
+                                <strong>Performance Optimization:</strong>
+                                <p>Real-time rendering on various devices without requiring high-end hardware</p>
+                            </li>
+                            <li>
+                                <strong>AI Training Data:</strong>
+                                <p>Building diverse datasets that represent all body types, skin tones, and demographics</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI Fashion Fitting Room. Democratizing fashion accessibility for everyone.</p>
+            <p class="footer-note">This is a concept demonstration. No actual AI processing or data storage occurs.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
